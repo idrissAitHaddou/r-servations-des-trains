@@ -1,0 +1,108 @@
+
+
+.nav-user{
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 2222222222222222;
+    width: 100vw !important;
+    background-color: $home-bg-color !important;
+    a,button{
+        color: #ABCDEC !important;    
+        font-family: $font-text;    
+        font-weight: bolder;
+    }
+    img{
+        cursor: pointer;
+    }
+    h2{
+        font-family: $font-title;
+        font-weight: bolder;
+    }
+}
+
+
+ .mainHome{
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+        background-color: $home-bg-color;
+        height: 530px;
+    
+    svg {
+        position: relative;
+        display: block;
+        width: calc(104% + 1.3px);
+        height: 69px;
+    }
+    
+    .shape-fill {
+        fill: white;
+    }
+
+    .carousel-item img{
+        transform: rotate(180deg);
+    }
+
+
+    .mainSlide{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-40%);
+        height: 80%;
+
+        .slide{
+            height: 100vh !important;
+            width: 100% !important;
+
+            .carousel-inner img{
+                height: 100% !important;
+                width: 100% !important;
+            }
+        }
+
+        .title-main{
+            transform: rotate(180deg);
+            display: flex !important;
+            justify-content: center !important;
+            align-content: flex-end !important;
+            align-items: center !important;
+
+            div{
+                width: 90%;
+                height: 260px;
+                margin-top: 160px;
+                
+            }
+           
+            
+        }
+
+    }
+
+
+ }
+
+
+ .search-content{
+     border: 1px solid $home-bg-color;
+     border-radius: 10px;
+ }
+
+.categories{
+    margin-top: 100px;
+}
+
+
+
+
+
+
+
+

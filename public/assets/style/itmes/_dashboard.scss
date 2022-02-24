@@ -1,0 +1,171 @@
+header{
+
+    #menu{
+        color: $main-color;
+    }
+    .parameter{
+        // background-color:$white-color;
+        margin-top: 40px !important;
+    }
+
+    .dropstart ul li{
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center;
+        align-content: center;
+
+        & a:hover{
+             background:none !important ;
+        }
+    }
+}
+
+
+
+aside{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    h5{
+        text-align: center;
+        color: $white-color;
+    }
+    .aside-title{
+        height: 40px;
+        margin-bottom: 50px;
+    }
+    .aside-content{
+      width: 100%;
+      height: 90%;
+      background-color: $main-color;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 10px;
+      overflow: hidden;
+
+        nav{
+                width: 100%;
+            
+                a{
+                    color: $main-color-text !important;
+                    margin: 4px;
+                    width: 100%;
+                    border-bottom: 1px solid $white-color;
+                    font-weight: bolder;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    transition: margin .5s;
+
+                    &:hover{
+                    margin-left: 6px !important;
+                    color: $white-color !important;
+                    }
+                    i{
+                        margin-right: 3px !important;
+                        color: $white-color;
+                        font-size: 15px;
+                        float: right;
+                    }
+                    
+                }
+            
+            }
+
+
+    }
+  
+
+    .card-body{
+        background-color: $main-color !important; 
+        border: none;
+        padding: 0px !important;
+        width: 100%!important;
+        align-items: flex-end;
+         a{
+            width: 90%; 
+             
+         }
+    }
+
+    i{
+        font-size: 20px;
+        cursor: pointer;
+        margin: auto;
+        color: $white-color;
+    }
+}
+
+main{
+    height: calc(100% - 40px);
+    padding: 20px !important;
+
+    .dashboard-st{
+        height: 200px;
+
+        .card-sta{
+            padding: 10px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .card-item-st{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        
+    }
+
+    .main-title{
+        display: flex;
+        justify-content: space-between;
+
+        h5{
+               color: $black-color;
+        }
+    }
+
+    .main-slide{
+        background-color: $bg-color;
+        height: 200px;
+        border-radius: 10px;
+        margin-top: 10px;
+        button{
+            background-color: $btn-bg-color;
+            border: none;
+            margin-top: 20px;
+        }
+        button:hover{
+            background-color: $btn-opacity-color;
+        }
+       
+        .main-slide-content div:first-child{
+            padding: 20px 20px 20px 40px;
+            text-align: left;
+        }
+        .main-slide-content div:last-child{
+            text-align: center;
+        }
+    }
+
+
+    .st-content{
+      border-radius: 10px;
+    }
+
+    .static-dash{
+        margin-top: 40px;
+    }
+
+    .st-title{
+        margin: 10px 0px 30px 0px;
+    }
+
+    .static-value{
+        margin-bottom: 20px;
+    }
+
+}
