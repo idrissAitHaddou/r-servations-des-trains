@@ -157,6 +157,7 @@
                      $data['profile']=$cli->getAdmin('role',1);
                      ViewAdmin::load('profile',$data);
                }
+               
             
             
          }

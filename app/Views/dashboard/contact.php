@@ -5,7 +5,7 @@
 <div class="row main-slide-content">
     <div class="col-6">
         <span>this is a dashboard page</span><br>
-        <a href=<?php echo BURL.'admin' ?> > <button class="btn">Dashboard</button>  </a>
+        <a href=<?php echo BURL.'admin' ?> id="hide"> <button class="btn">Dashboard</button>  </a>
     </div>
     <div class="col-6">
         <img src="../assets/images/dash.svg" width="80" height="80" alt="">
@@ -16,11 +16,20 @@
 <br>
 
 
+<!-- warning for traitment on mobile -->
+<div class="container" id="attention-mobile">
+  <div class="d-flex align-items justify-content-center">
+    <h class="text-center text-warning fw-bold">
+      Tous les traitement sont possible jute en Desktop
+    </h>
+  </div>
+</div>
 
 
 
 
-<table class="table caption-top">
+
+<table class="table caption-top" id="hide">
 
 
       <!-- start error for search -->
@@ -34,7 +43,7 @@
 
       <!-- end error for search -->
 
-      <div class="container">
+      <div class="container" id="hide">
             <div class="row">
                     <div class="col-7">
                       <span>Les contactes</span>
@@ -159,7 +168,7 @@
 
 <!-- start pagination -->
 
-<nav aria-label="Page navigation example" style="margin:auto;width:200px">
+<nav aria-label="Page navigation example" id="hide" style="margin:auto;width:200px">
   <ul class="pagination">
       <!-- <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">

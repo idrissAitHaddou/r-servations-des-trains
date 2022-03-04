@@ -10,9 +10,24 @@
         }
 
         //   get admin
-        public function getAdmin($col,$val){
-            return $this->selectJustOne($this->table,[$col],[$val]);
+        public function getUser($id){
+            $query=$this->connect()->prepare("SELECT R.id as res , R.date_depart as date_depart, RO.* ,RO.id as id_route , U.* FROM reservation R , users as U , route RO where R.id_user=U.id and RO.id=R.id_route and U.id=$id");
+            if($query->execute()){
+            return $query->fetchAll();
+            }else{
+                return 0;
+            }
         }
+
+        public function getGarOrTime($table,$col,$id){
+          $query=$this->connect()->prepare("SELECT * FROM $table where $col like $id");
+            if($query->execute()){
+                return $query->fetch();
+            }else{
+                return 0;
+            }
+        }
+
         //   update admin
         public function updateAdmin($email,$passW,$nom,$prenom,$tel,$con,$val){
             return $this->update($this->table,['email','pass','nom','prenom','tel'],[$email,$passW,$nom,$prenom,$tel],$con,$val);

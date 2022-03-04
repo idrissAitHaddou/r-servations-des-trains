@@ -74,6 +74,13 @@
       }
 
 
+      public function annulerRUser($id){
+
+         $res = new Reservation();
+         $res->annulerReservation($id);
+         header("location:/home/profile");
+         
+      }
 
 
 
@@ -245,12 +252,46 @@
                      $cli->updateAdmin($_POST["email"],$_POST["pass"],$_POST["nom"],$_POST["prenom"],$_POST["tel"],'id',$_SESSION["idUser"]);
                   }
 
-                  $data['profile']=$cli->getAdmin('id',$_SESSION["idUser"]);
+                  $data['profile']=$cli->getUser($_SESSION["idUser"]);
+                
+                  for($i=0 ; $i<count($data['profile']) ; $i++){
+                     // get gar
+                     $gar['depart']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_depart']);
+                     $gar['arrive']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_arrive']);
+                      // get time 
+                     $time['depart']=$cli->getGarOrTime('traintime','id_route',$data['profile'][$i]['id_route']);
+                     array_push($data['profile'][$i],$gar['depart']['nom']);
+                     array_push($data['profile'][$i],$gar['arrive']['nom']);
+                     array_push($data['profile'][$i],$time['depart']['time_depart']);
+                  }
                   ViewUser::load('profile',$data);
 
             }else{
                
-                  $data['profile']=$cli->getAdmin('id',$_SESSION["idUser"]);
+                  $data['profile']=$cli->getUser($_SESSION["idUser"]);
+                
+                  for($i=0 ; $i<count($data['profile']) ; $i++){
+                     // get gar
+                     $gar['depart']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_depart']);
+                     $gar['arrive']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_arrive']);
+                      // get time 
+                     $time['depart']=$cli->getGarOrTime('traintime','id_route',$data['profile'][$i]['id_route']);
+                     array_push($data['profile'][$i],$gar['depart']['nom']);
+                     array_push($data['profile'][$i],$gar['arrive']['nom']);
+                     array_push($data['profile'][$i],$time['depart']['time_depart']);
+                  }
+                  
+
+                  // echo '<pre>';
+                  //  print_r($data['profile']).'<br>';
+                  // echo'</pre>';
+                  // echo '<pre>';
+                  //  print_r($data['depart']).'<br>';
+                  // echo'</pre>';
+
+                  // echo '<pre>';
+                  //  print_r($data['arrive']).'<br>';
+                  // echo'</pre>';
                   ViewUser::load('profile',$data);
             }
                      

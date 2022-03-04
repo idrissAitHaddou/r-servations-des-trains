@@ -13,6 +13,38 @@
         .toogle-Aside{
             display: none !important;
         }
+        .toogle-Aside-mobile{
+            display: block !important;
+        }
+        #attention-mobile{
+            margin-top:100px !important;
+            display: none !important;
+        }
+        @media screen and (max-width:800px) {
+            aside{
+                display:none !important;
+                position:absolute;
+                top: 58px !important;
+                left:0px;
+                width:100vw !important;
+            }
+            #content-h{
+                width:100vw !important;
+            }
+            #attention-mobile{
+                display: block !important;
+            }
+            #img-dash{
+                display: none !important;
+            }
+            #hide{
+                display: none !important;
+            }
+            #static-reser{
+                width:220px !important;
+            }
+        }
+
     </style>
 </head>
 <body>

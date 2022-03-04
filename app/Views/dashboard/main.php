@@ -8,14 +8,14 @@
  <div class="container main-slide">
 
     <div class="row main-slide-content">
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
             <h3>Dashboard statistiques</h3>
             <span>this is a dashboard page</span><br>
             <span>this is a dashboard page</span><br>
-            <a href=<?php echo BURL.'admin/reservations' ?> ><button class="btn">All reservation</button></a>
+            <a href=<?php echo BURL.'admin/reservations' ?> id="hide"><button class="btn">All reservation</button></a>
         </div>
-        <div class="col-6">
-            <img src="assets/images/dash.svg" width="180" height="180" alt="">
+        <div class="col-md-6 col-sm-12">
+            <img src="assets/images/dash.svg" width="180" height="180" alt="" id="img-dash">
         </div>
     </div>
 
@@ -23,9 +23,9 @@
 
 
  <div class="container static-dash">
-     <div class="row">
+     <div class="row w-100">
 
-            <div class="col-6 border st-content">
+            <div class="col-lg-6 col-md-6 col-sm-12 border st-content">
 
                     <div class="main-title st-title">  <span>Reservation History</span>  <span> <?php echo date('Y'); ?> </span>  </div>
 
@@ -51,10 +51,10 @@
 
             </div>
 
-            <div class="col-1"></div>
+            <div class="col-lg-1 col-md-6 col-sm-12"></div>
 
-            <div class="col-5">
-                <canvas id="resrvationSta" style="width:100% ; height:100% ;"></canvas>
+            <div class="col-lg-5  col-md-6 col-sm-12">
+                <canvas id="resrvationSta" style="width:100% ; height:100% ;" id="static-reser"></canvas>
             </div>
 
      </div>

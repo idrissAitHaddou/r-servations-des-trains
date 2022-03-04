@@ -57,11 +57,11 @@
         <form action="/admin/login" method="POST">
 
           <br>
-          <div class="row">
-             <div class="col-6">
+          <div class="row g-4">
+             <div class="col-md-6">
                 <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
              </div>
-             <div class="col-6">
+             <div class="col-md-6">
                 <input type="text" name="pass" class="form-control" placeholder="Mot de pass" aria-label="Mot de pass">
              </div>
           </div>
