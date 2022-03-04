@@ -4,9 +4,8 @@
 
    class adminControllers{
 
-           private $numberPages=5;
+         private $numberPages=5;
 
-// ***************************** Get Views ********************************************************
 
          public function index(){
 
@@ -81,7 +80,6 @@
                         $data['contact']=$res->getAllContactSearch($date);
 
                         count($data['contact']) >0 ? $data["error"]="" : $data["error"]="votre recherche n'exist pas" ;
-
                         ViewAdmin::load('contact',$data);
 
                   }else{
@@ -109,7 +107,6 @@
                      $data['garArrive']=$res->getGarArriveReservationSearch($date);
 
                      count($data['reservations']) >0 ? $data["error"]="" : $data["error"]="votre recherche n'exist pas" ;
-
                      ViewAdmin::load('reservations',$data);
                   }else{
                      

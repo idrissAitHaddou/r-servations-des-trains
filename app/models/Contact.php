@@ -23,7 +23,7 @@
       }
 
       public function getAllContactSearch($date){
-        return $this->selectOne($this->table,["created_at"],[$date]);
+        return $this->selectOne($this->table,"created_at",$date);
       }
 
       

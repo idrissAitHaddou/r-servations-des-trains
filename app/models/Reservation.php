@@ -21,7 +21,7 @@
        //   get number of reservation
        public function getAllReservation($start,$nb){
 
-            $query=$this->connect()->prepare("SELECT R.id as id , R.state as state , u.email as email,R.date_depart as date_depart,g.nom as nomG
+            $query=$this->connect()->prepare("SELECT R.id as id , R.state as state , u.email as email,R.created_at as created_at,g.nom as nomG
             FROM reservation R, route O, users u,gar g  where R.id_route=O.id and R.id_user=u.id and O.id_depart=g.id order by R.id LIMIT $start,$nb");
             if($query->execute()){
             return $query->fetchAll();
@@ -35,7 +35,7 @@
        //   get reservation search
         public function getAllReservationSearch($date){
 
-            $query=$this->connect()->prepare("SELECT R.id as id , R.state as state , u.email as email,R.date_depart as date_depart,g.nom as nomG
+            $query=$this->connect()->prepare("SELECT R.id as id , R.state as state , u.email as email,R.created_at as created_at,g.nom as nomG
             FROM reservation R, route O, users u,gar g  where R.id_route=O.id and R.id_user=u.id and O.id_depart=g.id and R.created_at like '$date%'");
             if($query->execute()){
                return $query->fetchAll();
@@ -100,7 +100,7 @@
 
 
       public function annulerReservation($id){
-        $this->update($this->table,['state'],['annuler'],$id);
+        $this->update($this->table,['state'],['annuler'],'id',$id);
       }
 
       public function sendEmailRes($data){

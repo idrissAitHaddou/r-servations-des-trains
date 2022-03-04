@@ -73,7 +73,7 @@
       public function selectOne($table,$col,$val)
       {
 
-          $query=$this->connect()->prepare("SELECT * FROM `$table` where $col[0]=$val[0]");
+          $query=$this->connect()->prepare("SELECT * FROM `$table` where $col like '$val'");
           if($query->execute()){
             return $query->fetchAll();
           }else{

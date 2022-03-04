@@ -72,7 +72,7 @@
 
                 <tr class="text-center">
                   <td> <?php echo $res['email']; ?> </th>
-                  <td> <?php echo $res['date_depart']; ?> </td>
+                  <td> <?php echo $res['created_at']; ?> </td>
                   <td> <?php echo $res['nomG']; ?> </td>
                   <td> <?php echo $garArrive[$vali]['nomArrive']; $vali++ ; ?> </td>
                   <td> <?php echo $res['state'];?> </td>
