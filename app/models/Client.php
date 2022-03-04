@@ -10,12 +10,12 @@
         }
 
         //   get admin
-        public function getAdmin(){
-            return $this->selectJustOne($this->table,['role'],[1]);
+        public function getAdmin($col,$val){
+            return $this->selectJustOne($this->table,[$col],[$val]);
         }
         //   update admin
-        public function updateAdmin($email,$passW,$nom,$prenom,$tel){
-            return $this->update($this->table,['email','pass','nom','prenom','tel'],[$email,$passW,$nom,$prenom,$tel],'role',1);
+        public function updateAdmin($email,$passW,$nom,$prenom,$tel,$con,$val){
+            return $this->update($this->table,['email','pass','nom','prenom','tel'],[$email,$passW,$nom,$prenom,$tel],$con,$val);
         }
 
         //   get number of Client

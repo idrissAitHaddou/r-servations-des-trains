@@ -4,7 +4,7 @@
 
    class adminControllers{
 
-           private $numberPages=1;
+           private $numberPages=5;
 
 // ***************************** Get Views ********************************************************
 
@@ -50,7 +50,7 @@
                }else{
                      $data["email"]=$_POST["email"];
                      $data["pass"]=$_POST["pass"];
-                     $admin=$admObject->getAdmin();
+                     $admin=$admObject->getAdmin('role',1);
                      if($admin["email"]==$data["email"] && $admin["pass"]==$data["pass"]){
                        $_SESSION["adminEmail"]=$data["email"];
                        header("location:/admin");
@@ -143,21 +143,24 @@
                if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                      $data=[];
-                     if(empty($_POST["email"]) || empty($_POST["pass"]) || empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["tel"])){
+                     if(empty($_POST["email"]) || empty($_POST["pass"]) || empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["tel"]))
+                     {
                         $data["error"]="Entrer tout les information" ;
-                     }else{
+                     }else
+                     {
                         $data["error"]="Votre information est bien enregistrer";
-                        $cli->updateAdmin($_POST["email"],$_POST["pass"],$_POST["nom"],$_POST["prenom"],$_POST["tel"]);
+                        $cli->updateAdmin($_POST["email"],$_POST["pass"],$_POST["nom"],$_POST["prenom"],$_POST["tel"],'role',1);
                      }
 
-                     $data['profile']=$cli->getAdmin();
+                     $data['profile']=$cli->getAdmin('role',1);
                      ViewAdmin::load('profile',$data);
 
                }else{
                   
-                     $data['profile']=$cli->getAdmin();
+                     $data['profile']=$cli->getAdmin('role',1);
                      ViewAdmin::load('profile',$data);
                }
+            
             
          }
 

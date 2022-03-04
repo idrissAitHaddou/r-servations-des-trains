@@ -42,35 +42,6 @@
 
 <br><br>
 
-<div class="container">
-
-    <div class="row w-100 p-5 search-content" style="margin-top:10px;">
-
-            <div class="col-4">
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Gar depart</option>
-                <option value="1">Safi</option>
-                <option value="2">Souira</option>
-                <option value="3">Agadir</option>
-            </select>
-            </div>
-        
-            <div class="col-4">
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Gar arrivé</option>
-                <option value="1">Safi</option>
-                <option value="2">Souira</option>
-                <option value="3">Agadir</option>
-            </select>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-3 mt-1">
-                <button class="btn btn-primary w-100" style="width:130px;">search <i class="fa-solid fa-magnifying-glass mx-2"></i></button>
-            </div>
-    </div>
-
-</div>
-
 <div class="container categories">
 
     <h1 class="text-center">Gar containt</h1>

@@ -17,46 +17,96 @@
 
 
 
+<!-- start error for search -->
+
+        <?php  if(isset($error) && !empty($error)){ ?>
+
+        <?php if(!strcmp($error,"Entrer tout les information")){ ?>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <?php echo $error; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <?php  }else{   ?>
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $error; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <?php  }  ?>
+
+
+        <?php  } ?>
+
+<!-- end error for search -->
+
+
+
 
 
 
 <div class="container">
-    <form action="/home/profile" method="post">
-        <div class="row">
-            <div class="col-6">
-                <input type="text" class="form-control" placeholder="Nom" aria-label="Nom">
+
+
+
+        <form action="/home/profile" method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php echo $profile["email"] ?>" >
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="pass" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php echo $profile["pass"] ?>" >
+                        <label for="floatingInput">Mot de pass</label>
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
-                <input type="text" class="form-control" placeholder="Prenom" aria-label="Prenom">
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="nom" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php echo $profile["nom"] ?>" >
+                        <label for="floatingInput">Nom</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="prenom" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php echo $profile["prenom"] ?>" >
+                        <label for="floatingInput">Prenom</label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <br>
-        <div class="row">
 
-                <div class="col-6">                                                                
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Email">
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="tel" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php echo $profile["tel"] ?>" >
+                        <label for="floatingInput">Tel</label>
+                    </div>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Tel" aria-label="Tel">
+                    <div class="form-floating mb-3 h-100">
+                    <button type="submit" class="btn btn-primary w-100 mt-2">update</button>
+                    </div>
                 </div>
+            </div>
 
-        </div>
-        <br>
-        <div class="row">
 
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Old password" aria-label="Old password">
-                </div>
-                <div class="col-6">
-                    <button class="btn btn-primary w-100">update</button>
-                </div>
-      
-        </div>
-        <br>
+            <br>
+
+        </form>
 
 
 
-    </form>
+
+
+
 </div>
 
 <br><br>

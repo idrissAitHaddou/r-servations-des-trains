@@ -138,7 +138,61 @@
 
       public function reservation(){
 
-         ViewUser::load('reservation');
+               $res = new Reservation();
+               $data=[];
+               $data["errorDtae"]="";
+               $data["responseSearch"]="";
+               $data["garDepartPost"]="";
+               $data["garArrivePost"]="";
+               if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST["garDepart"])){
+
+                  if(!empty($_POST["garDepart"]) && !empty($_POST["garArrive"]))
+                  {
+
+                        $data["garDepartPost"]=$_POST["garDepart"];
+                        $data["garArrivePost"]=$_POST["garArrive"];
+                        $data["responseSearch"]=$res->searchRES($_POST["garDepart"],$_POST["garArrive"]);
+                        count($data['responseSearch']) >0 ? $data["error"]="" : $data["error"]="votre recherche n'exist pas" ;
+
+                  }
+
+                  if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"])){
+                      if(empty($_POST["email"]) || empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["getDate"]) || empty($_POST["garArrive"]) || empty($_POST["garDepart"]) ){
+                              $data["errorDtae"]="Tout les information sont obliger pour reservation";
+                      }else{
+
+                                 // for user
+                                 $Rout=$res->getRoute($_POST["garDepart"],$_POST["garArrive"]);
+
+                                 $userAdded=$res->addUser($_POST["nom"],$_POST["prenom"],$_POST["email"]);
+                                 $lastUser=$res->getLastUser();
+                                 
+                                 $res->addReservation($_POST["getDate"],$lastUser[0],$Rout[0]);
+
+                                 $data["errorDtae"]="votre reservation est bien enregistrer";
+
+                      }
+                  }else{
+
+                     // for client
+                     if(empty($_POST["getDate"]) || empty($_POST["garDepart"]) || empty($_POST["garArrive"]))
+                     {
+                        $data["errorDtae"]="Tout les information sont obliger pour reservation";
+                     }else{
+
+                           $Rout=$res->getRoute($_POST["garDepart"],$_POST["garArrive"]);
+                           $res->addReservation($_POST["getDate"],$_SESSION["idUser"],$Rout[0]);
+                           $data["errorDtae"]="votre reservation est bien enregistrer";
+
+                     }
+
+                  }
+                  
+                  
+
+               }
+
+               ViewUser::load('reservation',$data);
          
       }
 
@@ -166,18 +220,44 @@
              }
              
 
-         }else{
-            
          }
+
          ViewUser::load('search',$data);
          
       }
 
       public function profile(){
 
-         ViewUser::load('profile');
+         
+
+            //  get all contactes 
+            $cli = new Client();
+
+            if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+                  $data=[];
+                  if(empty($_POST["email"]) || empty($_POST["pass"]) || empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["tel"]))
+                  {
+                     $data["error"]="Entrer tout les information" ;
+                  }else
+                  {
+                     $data["error"]="Votre information est bien enregistrer";
+                     $cli->updateAdmin($_POST["email"],$_POST["pass"],$_POST["nom"],$_POST["prenom"],$_POST["tel"],'id',$_SESSION["idUser"]);
+                  }
+
+                  $data['profile']=$cli->getAdmin('id',$_SESSION["idUser"]);
+                  ViewUser::load('profile',$data);
+
+            }else{
+               
+                  $data['profile']=$cli->getAdmin('id',$_SESSION["idUser"]);
+                  ViewUser::load('profile',$data);
+            }
+                     
          
       }
+
+      
 
 
    }

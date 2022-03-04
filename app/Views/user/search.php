@@ -38,30 +38,30 @@
 
 <div class="container-fluid px-5 categories">
 
-    <!-- start error for search -->
+        <!-- start error for search -->
 
-            <?php  if(isset($error) && !empty($error)){ ?>
+                <?php  if(isset($error) && !empty($error)){ ?>
 
-                <?php if(!strcmp($error,"gar depart et gar arrive sont obliger pour recherche")){ ?>
+                    <?php if(!strcmp($error,"gar depart et gar arrive sont obliger pour recherche")){ ?>
 
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?php echo $error; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
 
-                <?php  }elseif(!strcmp($error,"votre recherche n'exist pas")){   ?>
+                    <?php  }elseif(!strcmp($error,"votre recherche n'exist pas")){   ?>
 
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?php echo $error; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
 
-                <?php  }  ?>
+                    <?php  }  ?>
 
 
-            <?php  } ?>
+                <?php  } ?>
 
-    <!-- end error for search -->
+        <!-- end error for search -->
 
 
         <div class="row w-100">

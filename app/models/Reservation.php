@@ -31,8 +31,8 @@
 
        }
 
-    //    ***************** START FUNCTIONS TO SEARCH *************************
-        //   get reservation search
+       //    ***************** START FUNCTIONS TO SEARCH *************************
+       //   get reservation search
         public function getAllReservationSearch($date){
 
             $query=$this->connect()->prepare("SELECT R.id as id , R.state as state , u.email as email,R.date_depart as date_depart,g.nom as nomG
@@ -120,7 +120,7 @@
 
     public function searchRES($idDepart,$idArrive){
 
-        $query=$this->connect()->prepare("SELECT T.time_depart , T.time_arrive
+        $query=$this->connect()->prepare("SELECT T.time_depart , T.time_arrive , O.prix as prix , O.distance as distance
         FROM traintime T , route O  where T.id_route=O.id and O.id_depart=$idDepart and O.id_arrive=$idArrive");
         if($query->execute()){
         return $query->fetchAll();
@@ -129,6 +129,49 @@
         }
 
     }
+
+
+    //   function to get Route
+
+    public function getRoute($idDepart,$idArrive){
+
+        $query=$this->connect()->prepare("SELECT id FROM route where id_depart like $idDepart  and id_arrive like $idArrive ");
+        if($query->execute()){
+            return $query->fetch();
+        }else{
+            return 0;
+        }
+
+    }
+
+    //   function to add reservation
+
+    public function addReservation($date_depart,$idUser,$route){
+
+        $this->insert($this->table,['date_depart','id_user','id_route'],[$date_depart,$idUser,$route]);
+
+    }
+
+        //   function to add user
+
+        public function addUser($nom,$prenom,$email){
+
+            $this->insert("users",['nom','prenom','email'],[$nom,$prenom,$email]);
+    
+        }
+
+         //   function to get last user
+
+         public function getLastUser(){
+
+            $query=$this->connect()->prepare("SELECT id FROM users order by id desc LIMIT 0,1");
+            if($query->execute()){
+                return $query->fetch();
+            }else{
+                return 0;
+            } 
+    
+        }
 
 
 
