@@ -2,7 +2,7 @@
   <hr>
     <div class="row">
 
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <div class="card border-white">
           <div class="card-body">
             <h5 class="card-title">Your welcome in ONCF</h5>
@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <div class="card border-white">
           <div class="card-body text-center">
             <a href="/home" class="nav-link">Home</a>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <div class="card border-white">
           <div class="card-body">
             <h5 class="card-title">Your welcome in ONCF</h5>

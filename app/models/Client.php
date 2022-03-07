@@ -10,8 +10,19 @@
         }
 
         //   get admin
+        public function getAdmin(){
+            $query=$this->connect()->prepare("SELECT * FROM users where role=1");
+            if($query->execute()){
+            return $query->fetch();
+            }else{
+                return 0;
+            }
+        }
+
+
+        //   get user
         public function getUser($id){
-            $query=$this->connect()->prepare("SELECT R.id as res , R.date_depart as date_depart, RO.* ,RO.id as id_route , U.* FROM reservation R , users as U , route RO where R.id_user=U.id and RO.id=R.id_route and U.id=$id");
+            $query=$this->connect()->prepare("SELECT R.id as res , R.date_depart as date_depart, RO.* ,RO.id as id_route , U.* FROM reservation R , users as U , route RO where R.state not like 'annuler' and R.id_user=U.id and RO.id=R.id_route and U.id=$id");
             if($query->execute()){
             return $query->fetchAll();
             }else{

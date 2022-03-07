@@ -32,14 +32,11 @@
 
 
 
-
-
-
 <div class="container">
 
 
-<div class="row w-100 g-5 align-items-start justify-content-center">
-    <div class="col-md-4 border p-4 d-flex flex-column align-item-center justify-content-center">
+<div class="row w-100 g-5 align-items-start justify-content-center mx-auto">
+    <div class="col-xl-4 border p-4 d-flex flex-column align-item-center justify-content-center">
 
             <div class="w-100 d-flex flex-column align-item-center justify-content-center">
                 <img src="../assets/images/admin.png" class="mx-auto" width="120" height="120" alt="">
@@ -51,8 +48,9 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-xl-4">
             <form action="/home/profile" method="POST" class="">
+
                 <h5>Mes informations</h5>
                 <div class="row g-2">
                     <div class="col-md-12">
@@ -96,7 +94,7 @@
             </form>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-xl-4">
         <h5>Mes reservations</h5>
         <table class="table">
             <thead>
@@ -107,7 +105,7 @@
             </thead>
         <tbody>
 
-       <?php  foreach($profile as $res){ ?>
+       <?php  foreach($profile as $res){ if($res[20]=='isPossible'){ ?>
 
             <tr>
                 <td class="ml-4 p-2 text-primary d-flex justify-content-between">
@@ -138,7 +136,7 @@
                 </td>
             </tr>
 
-        <?php } ?>
+        <?php }} ?>
 
         </tbody>
       </table>

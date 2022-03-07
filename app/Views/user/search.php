@@ -1,27 +1,26 @@
 
 <div class="container">
 
-<form action="/home/search" method="POST" class="row w-100 p-5 search-content" style="margin-top:10px;">
+<form action="/home/search" method="POST" class="row w-100 mx-auto p-5 search-content" style="margin-top:10px;">
 
-        <div class="col-4">
+        <div class="col-md-4">
           <select name="garDepart" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option <?php if(empty($garDepartPost)){echo "selected";} ?> disabled>Gar depart</option>
+            <option <?php if(empty($garDepartPost)){echo "selected";} ?> disabled>Gar départ</option>
             <option value="1" <?php if($garDepartPost==1){echo "selected";} ?> >Safi</option>
             <option value="6" <?php if($garDepartPost==6){echo "selected";} ?> >Souira</option>
             <option value="5" <?php if($garDepartPost==5){echo "selected";} ?> >Agadir</option>
           </select>
         </div>
     
-        <div class="col-4">
-          <select name="garArrive" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option <?php if(empty($garArrivePost)){echo "selected";} ?> disabled>Gar depart</option>
-            <option value="1" <?php if($garArrivePost==1){echo "selected";} ?> >Safi</option>
-            <option value="6" <?php if($garArrivePost==6){echo "selected";} ?> >Souira</option>
-            <option value="5" <?php if($garArrivePost==5){echo "selected";} ?> >Agadir</option>
-          </select>
+        <div class="col-md-4">
+            <select name="garArrive" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option <?php if(empty($garArrivePost)){echo "selected";} ?> disabled>Gar arrivé</option>
+                <option value="1" <?php if($garArrivePost==1){echo "selected";} ?> >Safi</option>
+                <option value="6" <?php if($garArrivePost==6){echo "selected";} ?> >Souira</option>
+                <option value="5" <?php if($garArrivePost==5){echo "selected";} ?> >Agadir</option>
+            </select>
         </div>
-        <div class="col-1"></div>
-        <div class="col-3 mt-1">
+        <div class="col-md-4">
             <button type="submit" class="btn btn-primary w-100" style="width:130px;">search <i class="fa-solid fa-magnifying-glass mx-2"></i></button>
         </div>
 

@@ -177,28 +177,6 @@ main .static-value {
 
 .reserv-slide {
   background-color: #b5c1ff;
-  height: 100px;
-  border-radius: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-.reserv-slide img {
-  margin-top: 10px;
-}
-.reserv-slide button {
-  background-color: #ffffffec;
-  border: none;
-  margin-top: 10px;
-}
-.reserv-slide button:hover {
-  background-color: #84adf8;
-}
-.reserv-slide .main-slide-content div:first-child {
-  padding: 20px 20px 20px 40px;
-  text-align: left;
-}
-.reserv-slide .main-slide-content div:last-child {
-  text-align: center;
 }
 
 .login-content {
@@ -230,67 +208,27 @@ main .static-value {
   font-weight: bolder;
 }
 
-.mainHome {
+.custom-shape-divider-bottom-1646513502 {
   position: relative;
-  top: 0;
+  bottom: 0;
   left: 0;
-  z-index: 2;
   width: 100%;
   overflow: hidden;
   line-height: 0;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
   background-color: #0067F0;
-  height: 530px;
 }
-.mainHome svg {
+
+.custom-shape-divider-bottom-1646513502 svg {
   position: relative;
   display: block;
-  width: calc(104% + 1.3px);
-  height: 69px;
+  width: calc(100% + 1.3px);
+  max-height: 84px;
 }
-.mainHome .shape-fill {
-  fill: white;
-}
-.mainHome .carousel-item img {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.mainHome .mainSlide {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -40%);
-          transform: translate(-50%, -40%);
-  height: 80%;
-}
-.mainHome .mainSlide .slide {
-  height: 100vh !important;
-  width: 100% !important;
-}
-.mainHome .mainSlide .slide .carousel-inner img {
-  height: 100% !important;
-  width: 100% !important;
-}
-.mainHome .mainSlide .title-main {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-  -ms-flex-line-pack: end !important;
-      align-content: flex-end !important;
-  -webkit-box-align: center !important;
-      -ms-flex-align: center !important;
-          align-items: center !important;
-}
-.mainHome .mainSlide .title-main div {
-  width: 90%;
-  height: 260px;
-  margin-top: 160px;
+
+.custom-shape-divider-bottom-1646513502 .shape-fill {
+  fill: #FFFFFF;
 }
 
 .search-content {
@@ -302,6 +240,11 @@ main .static-value {
   margin-top: 100px;
 }
 
+@media screen and (max-width: 800px) {
+  .welcome {
+    display: none !important;
+  }
+}
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

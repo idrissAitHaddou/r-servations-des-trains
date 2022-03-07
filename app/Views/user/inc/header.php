@@ -23,8 +23,8 @@
 <nav class="navbar navbar-expand-lg nav-user">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><h2>ONCF</h2></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon bg-dark"></span>
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-center">
@@ -48,7 +48,7 @@
         <?php if(isset($_SESSION["emailUser"]) && !empty($_SESSION["emailUser"])){ ?>
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle nav-link dropdown-toggle user-action" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="/assets/images/admin.png" width="38" height="38" class="avatar" alt="Avatar"> idriss ait haddou
+                  <img src="/assets/images/admin.png" width="38" height="38" class="avatar" alt="Avatar"> <?php echo $_SESSION["emailUser"]; ?>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <a href="/home/profile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>

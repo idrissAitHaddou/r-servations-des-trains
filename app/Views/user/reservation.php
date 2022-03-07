@@ -1,64 +1,60 @@
-
-    <div class="w-50" style="margin:auto;">
-        
-        <div class="container reserv-slide">
-
-            <div class="row main-slide-content">
-                <div class="col-6">
-                    <h3>Reservation</h3>
-                </div>
-                <div class="col-6">
-                    <img src="../assets/images/Reset password-bro.svg" width="80" height="80" alt="">
-                </div>
-            </div>
-
-        </div>
-
-        <br>
-
         <!-- start error for search -->
 
-                <?php  if(isset($errorDtae) && !empty($errorDtae)){ ?>
+        <?php  if(isset($errorDtae) && !empty($errorDtae)){ ?>
 
-                <?php  if(!strcmp($errorDtae,"Tout les information sont obliger pour reservation")){ ?>
+        <?php  if(!strcmp($errorDtae,"Tout les information sont obliger pour reservation")){ ?>
 
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <?php  echo $errorDtae; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-
-                <?php  }elseif(!strcmp($errorDtae,"votre reservation est bien enregistrer")){  ?>
-
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?php  echo $errorDtae; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-
-                <?php }} ?>
-
-        <!-- end error for search -->
-
-
-        <br>
-
-        <?php if($responseSearch){ foreach($responseSearch as $res){ ?>
-
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">your reservation</h4>
-                <p>perix : <?php echo $res['prix']; ?>DH </p>
-                <p>distance : <?php echo $res['distance']; ?>KM </p>
-                <hr>
-                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                <br>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?php  echo $errorDtae; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
-        <?php  }}  ?>
+        <?php  }elseif(!strcmp($errorDtae,"votre reservation est bien enregistrer")){  ?>
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php  echo $errorDtae; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+        <?php }} ?>
+
+<!-- end error for search -->
+
+<?php if($responseSearch){ foreach($responseSearch as $res){ ?>
+
+<div class="container">
+    <div class="row mx-auto align-items-center justify-content-center">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">your reservation</h4>
+            <p>perix : <?php echo $res['prix']; ?>DH </p>
+            <p>distance : <?php echo $res['distance']; ?>KM </p>
+            <hr>
+            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            <br>
+        </div>
+    </div>
+</div>
+
+<?php  }}  ?>
 
 
-            <form action="/home/reservation" method="POST" class="row w-100 p-5 search-content" style="margin-top:10px;border:none !important;">
 
-                    <div class="row">
-                            <div class="col-6">
+
+<div class="container mb-5">
+    <div class="row w-100 mt-5 d-flex align-items-center justify-content-center">
+        
+        <div class="col-md-4 h-100 d-flex align-items-start justify-content-center mt-4 text-center">
+                <img src="../assets/images/Reset password-bro.svg" width="220" height="220" alt="">
+        </div>
+
+
+
+
+
+        <form action="/home/reservation" method="POST" class="col-md-8 p-4 border border-info border-end-0 border-top-0 border-bottom-0">
+
+                    <div class="row g-3">
+                            <div class="col-md-6">
                             <select name="garDepart" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                 <option <?php if(empty($garDepartPost)){echo "selected";} ?> disabled>Gar depart</option>
                                 <option value="1" <?php if($garDepartPost==1){echo "selected";} ?> >Safi</option>
@@ -67,7 +63,7 @@
                             </select>
                             </div>
                         
-                            <div class="col-6">
+                            <div class="col-md-6">
                             <select name="garArrive" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                 <option <?php if(empty($garArrivePost)){echo "selected";} ?> disabled>Gar depart</option>
                                 <option value="1" <?php if($garArrivePost==1){echo "selected";} ?> >Safi</option>
@@ -159,7 +155,7 @@
 
                 <?php  }else{  ?>
 
-                    <input type="submit" class="btn btn-primary w-100" value="Reservation" >                
+                    <input type="submit" class="btn border-primary text-primary w-100" value="Reservation" >                
 
                 <?php }}  ?>
                 </div>
@@ -170,3 +166,4 @@
 
 
     </div>
+</div>

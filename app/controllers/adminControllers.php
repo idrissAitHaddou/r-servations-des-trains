@@ -49,7 +49,7 @@
                }else{
                      $data["email"]=$_POST["email"];
                      $data["pass"]=$_POST["pass"];
-                     $admin=$admObject->getAdmin('role',1);
+                     $admin=$admObject->getAdmin();
                      if($admin["email"]==$data["email"] && $admin["pass"]==$data["pass"]){
                        $_SESSION["adminEmail"]=$data["email"];
                        header("location:/admin");

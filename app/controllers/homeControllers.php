@@ -279,8 +279,18 @@
                      array_push($data['profile'][$i],$gar['depart']['nom']);
                      array_push($data['profile'][$i],$gar['arrive']['nom']);
                      array_push($data['profile'][$i],$time['depart']['time_depart']);
+                     // validate time 
+                     $dt=explode(':',$data['profile'][$i][19]);
+                     if($dt[0]-date('h')!=1 && date('Y-m-d')<$data['profile'][$i]['date_depart']){ 
+                        array_push($data['profile'][$i],'isPossible');
+                      }
+                     else{ 
+                        array_push($data['profile'][$i],'nonPossible');
+                     }
+                     
                   }
                   
+
 
                   // echo '<pre>';
                   //  print_r($data['profile']).'<br>';
@@ -292,6 +302,8 @@
                   // echo '<pre>';
                   //  print_r($data['arrive']).'<br>';
                   // echo'</pre>';
+
+
                   ViewUser::load('profile',$data);
             }
                      
