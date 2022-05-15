@@ -1,22 +1,22 @@
-        <!-- start error for search -->
+<!-- start error for search -->
 
-        <?php  if(isset($errorDtae) && !empty($errorDtae)){ ?>
+<?php  if(isset($errorDtae) && !empty($errorDtae)){ ?>
 
-        <?php  if(!strcmp($errorDtae,"Tout les information sont obliger pour reservation")){ ?>
+<?php  if(!strcmp($errorDtae,"Tout les information sont obliger pour reservation")){ ?>
 
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <?php  echo $errorDtae; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <?php  echo $errorDtae; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
-        <?php  }elseif(!strcmp($errorDtae,"votre reservation est bien enregistrer")){  ?>
+<?php  }elseif(!strcmp($errorDtae,"votre reservation est bien enregistrer")){  ?>
 
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?php  echo $errorDtae; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?php  echo $errorDtae; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
-        <?php }} ?>
+<?php }} ?>
 
 <!-- end error for search -->
 
@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-12">
 
-                    <?php if($responseSearch){ foreach($responseSearch as $res){ ?>
+                    <?php if($responseSearch && $numberplaces['ressum']<4){ foreach($responseSearch as $res){ ?>
 
                         <input type="date" name="getDate" class="form-control"> <br> 
                         
@@ -120,7 +120,7 @@
 
                 <div class="col-12">
 
-                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"])){ ?>
+                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"]) && $numberplaces['ressum']<4){ ?>
 
                         <input type="email" name="email" placeholder="Email" class="form-control"> <br>
                         
@@ -130,7 +130,7 @@
 
                 <div class="col-12">
 
-                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"])){  ?>
+                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"]) && $numberplaces['ressum']<4){  ?>
 
                         <input type="text" name="nom" placeholder="Nom" class="form-control"> <br>
                         
@@ -140,7 +140,7 @@
 
                 <div class="col-12">
 
-                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"])){  ?>
+                    <?php if(!isset($_SESSION["idUser"]) && empty($_SESSION["idUser"]) && !empty($_POST["garDepart"]) && !empty($_POST["garArrive"]) && $numberplaces['ressum']<4){  ?>
 
                         <input type="text" name="prenom" placeholder="Prenom" class="form-control"> <br>
                         
@@ -149,15 +149,20 @@
                 </div>
 
                 <div class="col-12">
-                <?php if(strcmp($errorDtae,"votre reservation est bien enregistrer")){ if($responseSearch){ ?>
+                <?php if(strcmp($errorDtae,"votre reservation est bien enregistrer") && $numberplaces['ressum']<4){ if($responseSearch){ ?>
 
                     <input type="submit" class="btn btn-success w-100" value="valider" >       
 
-                <?php  }else{  ?>
+                <?php  }elseif($numberplaces['ressum']<4){  ?>
 
                     <input type="submit" class="btn border-primary text-primary w-100" value="Reservation" >                
 
                 <?php }}  ?>
+
+                <?php  if($numberplaces['ressum']>=4){ ?>
+                    <p>le nombre de places est plien</p>
+                <?php }  ?>
+
                 </div>
             </div>
 

@@ -151,6 +151,7 @@
                $data["responseSearch"]="";
                $data["garDepartPost"]="";
                $data["garArrivePost"]="";
+               $data["numberplaces"]['ressum']="";
                if($_SERVER["REQUEST_METHOD"]=="POST" && !empty($_POST["garDepart"])){
 
                   if(!empty($_POST["garDepart"]) && !empty($_POST["garArrive"]))
@@ -159,6 +160,7 @@
                         $data["garDepartPost"]=$_POST["garDepart"];
                         $data["garArrivePost"]=$_POST["garArrive"];
                         $data["responseSearch"]=$res->searchRES($_POST["garDepart"],$_POST["garArrive"]);
+                        $data["numberplaces"]=$res->getResrCount($_POST["garDepart"],$_POST["garArrive"]);
                         count($data['responseSearch']) >0 ? $data["error"]="" : $data["error"]="votre recherche n'exist pas" ;
 
                   }
@@ -198,6 +200,15 @@
                   
 
                }
+              
+                  // echo '<pre>';
+                  //  print_r($data["responseSearch"]).'<br>';
+                  // echo'</pre>';
+                  // echo '<pre>';
+                  //  print_r($data["numberplaces"]).'<br>';
+                  // echo'</pre>';
+
+                  // echo $data['numberplaces']['ressum'];
 
                ViewUser::load('reservation',$data);
          
@@ -236,7 +247,7 @@
       public function profile(){
 
          
-
+         date_default_timezone_set('Africa/casablanca');
             //  get all contactes 
             $cli = new Client();
 
@@ -255,14 +266,41 @@
                   $data['profile']=$cli->getUser($_SESSION["idUser"]);
                 
                   for($i=0 ; $i<count($data['profile']) ; $i++){
+
                      // get gar
                      $gar['depart']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_depart']);
                      $gar['arrive']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_arrive']);
-                      // get time 
+                     // get time 
                      $time['depart']=$cli->getGarOrTime('traintime','id_route',$data['profile'][$i]['id_route']);
                      array_push($data['profile'][$i],$gar['depart']['nom']);
                      array_push($data['profile'][$i],$gar['arrive']['nom']);
                      array_push($data['profile'][$i],$time['depart']['time_depart']);
+                     // validate time 
+                     $dt=explode(':',$data['profile'][$i][19]);
+                     // ----------------------------
+                     $time1 = new DateTime(date('H:i:s'));
+                     $time2 = new DateTime(date($dt[0].':'.$dt[1].':'.$dt[2]));
+                     $interval = $time1->diff($time2);
+                     // -----------------------------
+
+                     if(date('Y-m-d')<$data['profile'][$i]['date_depart']):
+                        array_push($data['profile'][$i],'isPossible');
+                     elseif(date('Y-m-d')==$data['profile'][$i]['date_depart']):
+                        if($dt[0]>10 && date('H')>10 && date('H')>$dt[0] && $interval->h>1):
+                           array_push($data['profile'][$i],'isPossible');
+                        elseif($dt[0]<10 && date('H')<10 && date('H')>$dt[0] && $interval->h>1):
+                           array_push($data['profile'][$i],'isPossible');
+                        elseif(date('H')>$dt[0] && $interval->h>1):
+                           array_push($data['profile'][$i],'nonPossible');
+                        elseif(date('H')===$dt[0]):
+                              array_push($data['profile'][$i],'nonPossible');
+                        else:
+                           array_push($data['profile'][$i],'isPossible');
+                        endif;
+                     else:
+                        array_push($data['profile'][$i],'nonPossible');
+                     endif;
+                     
                   }
                   ViewUser::load('profile',$data);
 
@@ -271,26 +309,42 @@
                   $data['profile']=$cli->getUser($_SESSION["idUser"]);
                 
                   for($i=0 ; $i<count($data['profile']) ; $i++){
+
                      // get gar
                      $gar['depart']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_depart']);
                      $gar['arrive']=$cli->getGarOrTime('gar','id',$data['profile'][$i]['id_arrive']);
-                      // get time 
+                     // get time 
                      $time['depart']=$cli->getGarOrTime('traintime','id_route',$data['profile'][$i]['id_route']);
                      array_push($data['profile'][$i],$gar['depart']['nom']);
                      array_push($data['profile'][$i],$gar['arrive']['nom']);
                      array_push($data['profile'][$i],$time['depart']['time_depart']);
                      // validate time 
                      $dt=explode(':',$data['profile'][$i][19]);
-                     if($dt[0]-date('h')!=1 && date('Y-m-d')<$data['profile'][$i]['date_depart']){ 
+                     // ----------------------------
+                     $time1 = new DateTime(date('H:i:s'));
+                     $time2 = new DateTime(date($dt[0].':'.$dt[1].':'.$dt[2]));
+                     $interval = $time1->diff($time2);
+                     // -----------------------------
+
+                     if(date('Y-m-d')<$data['profile'][$i]['date_depart']):
                         array_push($data['profile'][$i],'isPossible');
-                      }
-                     else{ 
+                     elseif(date('Y-m-d')==$data['profile'][$i]['date_depart']):
+                        if($dt[0]>10 && date('H')>10 && date('H')>$dt[0] && $interval->h>1):
+                           array_push($data['profile'][$i],'isPossible');
+                        elseif($dt[0]<10 && date('H')<10 && date('H')>$dt[0]  && $interval->h>1):
+                           array_push($data['profile'][$i],'isPossible');
+                        elseif(date('H')>$dt[0] && $interval->h>1):
+                           array_push($data['profile'][$i],'nonPossible');
+                           elseif(date('H')===$dt[0]):
+                              array_push($data['profile'][$i],'nonPossible');
+                        else:
+                           array_push($data['profile'][$i],'isPossible');
+                        endif;
+                     else:
                         array_push($data['profile'][$i],'nonPossible');
-                     }
+                     endif;
                      
                   }
-                  
-
 
                   // echo '<pre>';
                   //  print_r($data['profile']).'<br>';
@@ -302,8 +356,6 @@
                   // echo '<pre>';
                   //  print_r($data['arrive']).'<br>';
                   // echo'</pre>';
-
-
                   ViewUser::load('profile',$data);
             }
                      

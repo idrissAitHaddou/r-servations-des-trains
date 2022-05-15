@@ -130,6 +130,19 @@
 
     }
 
+        //   function to get Route
+
+        public function getResrCount($idDepart,$idArrive){
+
+            $query=$this->connect()->prepare("SELECT COUNT(*) as ressum FROM reservation as res, route as ro where ro.id_depart like $idDepart and ro.id_arrive like $idArrive and res.id_route like ro.id ");
+            if($query->execute()){
+                return $query->fetch();
+            }else{
+                return 0;
+            }
+    
+        }
+
 
     //   function to get Route
 
